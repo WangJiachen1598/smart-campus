@@ -1,0 +1,58 @@
+<view class="container">
+  <view class="header">
+    <text class="title">综测加分</text>
+  </view>
+
+  <view class="semester-selector">
+    <picker mode="selector" range="{{semesters}}" value="{{semesters.indexOf(currentSemester)}}" bindchange="onSemesterChange">
+      <view class="picker">
+        <text class="picker-label">学期：</text>
+        <text class="picker-value">{{currentSemester}}</text>
+        <text class="picker-arrow">▼</text>
+      </view>
+    </picker>
+  </view>
+
+  <view class="summary-card">
+    <view class="total-score">
+      <text class="score-label">总加分</text>
+      <text class="score-value">{{totalScore}}</text>
+    </view>
+    <view class="stats-grid">
+      <view class="stat-item">
+        <text class="stat-value">{{approvedCount}}</text>
+        <text class="stat-label">已通过</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">{{pendingCount}}</text>
+        <text class="stat-label">审核中</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">加分明细</text>
+    </view>
+    <view class="awards-list">
+      <view class="award-item" wx:for="{{awardsList}}" wx:key="id">
+        <view class="item-top">
+          <view class="item-left">
+            <text class="project-name">{{item.project}}</text>
+            <text class="create-time">{{item.createTime}}</text>
+          </view>
+          <view class="item-right">
+            <text class="score-tag">+{{item.score}}</text>
+          </view>
+        </view>
+        <view class="item-bottom">
+          <text class="remark">{{item.remark}}</text>
+          <text class="status-tag status-{{getStatusClass(item.status)}}">{{getStatusText(item.status)}}</text>
+        </view>
+      </view>
+      <view class="empty-tip" wx:if="{{awardsList.length === 0}}">
+        <text>暂无加分记录</text>
+      </view>
+    </view>
+  </view>
+</view>

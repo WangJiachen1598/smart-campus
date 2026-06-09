@@ -1,0 +1,63 @@
+<view class="container">
+  <view class="header">
+    <view class="header-title">消息中心</view>
+    <view class="header-actions" wx:if="{{unreadCount > 0}}" bindtap="markAllRead">
+      <text class="mark-read">全部已读</text>
+    </view>
+  </view>
+
+  <view class="tabs">
+    <view 
+      class="tab-item {{currentTab === item.key ? 'active' : ''}}" 
+      wx:for="{{tabs}}" 
+      wx:key="key" 
+      bindtap="onTabChange" 
+      data-key="{{item.key}}"
+    >
+      <text>{{item.label}}</text>
+      <view class="tab-badge" wx:if="{{item.key === 'all' && unreadCount > 0}}">
+        {{unreadCount > 99 ? '99+' : unreadCount}}
+      </view>
+    </view>
+  </view>
+
+  <view class="message-list">
+    <view 
+      class="message-item {{!item.isRead ? 'unread' : ''}}" 
+      wx:for="{{messageList}}" 
+      wx:key="id" 
+      bindtap="goDetail" 
+      data-id="{{item.id}}"
+    >
+      <view class="message-icon {{getTypeClass(item.type)}}">
+        <text style="font-size: 32rpx;">{{item.type === 'club' ? '🎯' : item.type === 'study' ? '📚' : '✅'}}</text>
+      </view>
+      <view class="message-content">
+        <view class="message-title-row">
+          <text class="message-title">{{item.title}}</text>
+          <text class="message-time">{{item.createTime}}</text>
+        </view>
+        <text class="message-desc">{{item.content}}</text>
+        <view class="message-tags">
+          <text class="tag tag-small {{item.type === 'club' ? 'tag-primary' : item.type === 'study' ? 'tag-success' : 'tag-warning'}}">
+            {{getTypeText(item.type)}}
+          </text>
+        </view>
+      </view>
+      <view class="unread-dot" wx:if="{{!item.isRead}}"></view>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:if="{{messageList.length === 0 && !loading}}">
+    <text style="font-size: 64rpx;">📭</text>
+    <text>暂无消息</text>
+  </view>
+
+  <view class="loading" wx:if="{{loading}}">
+    <view class="loading-dot"></view>
+    <view class="loading-dot"></view>
+    <view class="loading-dot"></view>
+  </view>
+</view>
+
+<custom-tab-bar />

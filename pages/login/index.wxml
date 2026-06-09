@@ -1,0 +1,50 @@
+<view class="login-container">
+  <view class="logo-section">
+    <view class="logo" style="width: 160rpx; height: 160rpx; border-radius: 50%; background: linear-gradient(135deg, #1a73e8, #0d47a1); display: flex; align-items: center; justify-content: center; color: white; font-size: 80rpx;">
+      🏫
+    </view>
+    <text class="app-name">智慧校园</text>
+    <text class="app-slogan">学情与社团一体化管理</text>
+  </view>
+
+  <view class="login-section">
+    <view class="user-type-tabs">
+      <view class="tab-item {{userType === 'student' ? 'active' : ''}}" bindtap="onChangeUserType" data-type="student">
+        <text>我是学生</text>
+      </view>
+      <view class="tab-item {{userType === 'teacher' ? 'active' : ''}}" bindtap="onChangeUserType" data-type="teacher">
+        <text>我是教师</text>
+      </view>
+    </view>
+
+    <view class="form-section">
+      <view class="input-group">
+        <view class="input-label">{{userType === 'student' ? '学号' : '工号'}}</view>
+        <input class="input" type="text" placeholder="{{userType === 'student' ? '请输入学号' : '请输入工号'}}" value="{{userId}}" bindinput="onInputUserId" maxlength="20"/>
+      </view>
+
+      <view class="input-group">
+        <view class="input-label">密码</view>
+        <input class="input" type="password" placeholder="请输入密码" value="{{password}}" bindinput="onInputPassword"/>
+      </view>
+
+      <view class="protocol-row">
+        <checkbox-group bindchange="onChangeAgree">
+          <label class="protocol-label">
+            <checkbox value="agree" color="#1a73e8"/>
+            <text class="protocol-text">我已阅读并同意</text>
+          </label>
+        </checkbox-group>
+        <text class="protocol-link" bindtap="goProtocol">《用户服务协议》</text>
+      </view>
+
+      <button class="btn-login" bindtap="handleLogin" loading="{{loading}}">
+        登 录
+      </button>
+    </view>
+  </view>
+
+  <view class="footer-section">
+    <text class="footer-text">登录即表示同意我们的服务条款</text>
+  </view>
+</view>

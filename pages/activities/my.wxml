@@ -1,0 +1,61 @@
+<view class="container">
+  <view class="tabs">
+    <view class="tab-item {{currentTab === 0 ? 'active' : ''}}" bindtap="onTabChange" data-index="0">
+      <text>已报名</text>
+    </view>
+    <view class="tab-item {{currentTab === 1 ? 'active' : ''}}" bindtap="onTabChange" data-index="1">
+      <text>已签到</text>
+    </view>
+  </view>
+
+  <swiper class="swiper" current="{{currentTab}}" bindchange="onTabChange">
+    <swiper-item>
+      <view class="activity-list">
+        <view class="activity-card" wx:for="{{registeredActivities}}" wx:key="id" bindtap="goActivityDetail" data-id="{{item.id}}">
+          <view class="activity-cover" style="background: linear-gradient(135deg, #1a73e8, #0d47a1); display: flex; align-items: center; justify-content: center; color: white; font-size: 60rpx;">🎉</view>
+          <view class="activity-info">
+            <view class="activity-header">
+              <text class="activity-name">{{item.title}}</text>
+              <text class="tag tag-primary">已报名</text>
+            </view>
+            <text class="activity-meta">{{item.club}}</text>
+            <text class="activity-time">{{item.time}}</text>
+          </view>
+        </view>
+        
+        <view class="empty-state" wx:if="{{!loading && registeredActivities.length === 0}}">
+          <text style="font-size: 64rpx;">📭</text>
+          <text>还没有报名任何活动</text>
+          <text class="hint">快去「首页」查看活动</text>
+        </view>
+      </view>
+    </swiper-item>
+
+    <swiper-item>
+      <view class="activity-list">
+        <view class="activity-card checked" wx:for="{{checkedActivities}}" wx:key="id" bindtap="goActivityDetail" data-id="{{item.id}}">
+          <view class="activity-cover" style="background: linear-gradient(135deg, #4caf50, #388e3c); display: flex; align-items: center; justify-content: center; color: white; font-size: 60rpx;">✓</view>
+          <view class="activity-info">
+            <view class="activity-header">
+              <text class="activity-name">{{item.title}}</text>
+              <text class="tag tag-success">已签到</text>
+            </view>
+            <text class="activity-meta">{{item.club}}</text>
+            <text class="activity-time">{{item.time}}</text>
+          </view>
+        </view>
+        
+        <view class="empty-state" wx:if="{{!loading && checkedActivities.length === 0}}">
+          <text style="font-size: 64rpx;">✓</text>
+          <text>还没有签到记录</text>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+
+  <view class="loading" wx:if="{{loading}}">
+    <view class="loading-dot"></view>
+    <view class="loading-dot"></view>
+    <view class="loading-dot"></view>
+  </view>
+</view>

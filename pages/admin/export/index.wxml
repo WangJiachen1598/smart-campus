@@ -1,0 +1,57 @@
+<view class="container">
+  <view class="header">
+    <view class="header-title">批量导出</view>
+  </view>
+
+  <view class="export-section">
+    <view class="section-title">选择导出类型</view>
+    <view class="type-grid">
+      <view class="type-item {{exportType === item.id ? 'active' : ''}}" 
+            wx:for="{{exportTypes}}" 
+            wx:key="id"
+            data-type="{{item.id}}"
+            bindtap="onTypeSelect">
+        <view class="type-icon">{{item.icon}}</view>
+        <text class="type-name">{{item.name}}</text>
+        <text class="type-desc">{{item.desc}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="export-section">
+    <view class="section-title">导出设置</view>
+    <view class="setting-item">
+      <text class="setting-label">日期范围</text>
+      <view class="date-range">
+        <input class="date-input" value="{{dateRange.start}}" disabled />
+        <text class="date-separator">至</text>
+        <input class="date-input" value="{{dateRange.end}}" disabled />
+      </view>
+    </view>
+    <view class="setting-item">
+      <text class="setting-label">导出格式</text>
+      <view class="format-tag active">Excel (.xlsx)</view>
+    </view>
+  </view>
+
+  <view class="export-section">
+    <button class="export-btn primary" type="primary" bindtap="exportData">
+      导出选中数据
+    </button>
+    <button class="export-btn" bindtap="exportAll">导出全部数据</button>
+  </view>
+
+  <view class="export-section">
+    <view class="section-title">导出历史</view>
+    <view class="history-list">
+      <view class="history-item" wx:for="{{exportHistory}}" wx:key="id">
+        <view class="history-icon">📄</view>
+        <view class="history-info">
+          <text class="history-name">{{item.fileName}}</text>
+          <text class="history-meta">{{item.time}} · {{item.size}}</text>
+        </view>
+        <view class="history-action">下载</view>
+      </view>
+    </view>
+  </view>
+</view>

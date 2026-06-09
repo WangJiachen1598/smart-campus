@@ -1,0 +1,61 @@
+<view class="container" wx:if="{{activity}}">
+  <view class="header-section">
+    <view class="activity-info">
+      <text class="activity-title">{{activity.title}}</text>
+      <text class="activity-time">{{activity.startTime}}</text>
+      <text class="activity-location">{{activity.location}}</text>
+    </view>
+    
+    <view class="sign-in-status">
+      <view class="status-icon" style="font-size: 64rpx;">
+        {{hasSignedIn ? '✅' : '📱'}}
+      </view>
+      <view class="status-text">
+        <text class="status-title">{{hasSignedIn ? '已签到' : '待签到'}}</text>
+        <text class="status-desc">{{hasSignedIn ? '您已完成本次活动签到' : '请扫描活动现场二维码签到'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="action-section" wx:if="{{!hasSignedIn}}">
+    <button class="btn btn-primary btn-block" bindtap="scanCode" disabled="{{scanning}}">
+      {{scanning ? '扫描中...' : '扫码签到'}}
+    </button>
+    <button class="btn btn-outline btn-block" bindtap="manualSignIn">
+      手动签到
+    </button>
+  </view>
+
+  <view class="records-section">
+    <view class="section-header">
+      <text class="section-title">签到记录</text>
+      <text class="section-count">{{signInRecords.length}} 人</text>
+    </view>
+    
+    <view class="record-list">
+      <view class="record-item" wx:for="{{signInRecords}}" wx:key="id">
+        <view class="user-avatar" style="width: 80rpx; height: 80rpx; border-radius: 50%; background: #1a73e8; display: flex; align-items: center; justify-content: center; color: white; font-size: 32rpx;">
+          👤
+        </view>
+        <view class="user-info">
+          <text class="user-name">{{item.userName}}</text>
+          <text class="sign-time">{{item.signInTime}}</text>
+        </view>
+        <view class="sign-method">
+          <text class="method-tag">{{item.method === 'qrcode' ? '扫码' : '手动'}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="empty-state" wx:if="{{signInRecords.length === 0}}">
+      <text style="font-size: 64rpx;">📭</text>
+      <text>暂无签到记录</text>
+    </view>
+  </view>
+</view>
+
+<view class="loading" wx:if="{{loading}}">
+  <view class="loading-dot"></view>
+  <view class="loading-dot"></view>
+  <view class="loading-dot"></view>
+</view>

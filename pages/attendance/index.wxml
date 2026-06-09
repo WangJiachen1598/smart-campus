@@ -1,0 +1,65 @@
+<view class="container">
+  <view class="header">
+    <text class="title">考勤记录</text>
+  </view>
+
+  <view class="month-selector">
+    <picker mode="selector" range="{{months}}" value="{{months.indexOf(currentMonth)}}" bindchange="onMonthChange">
+      <view class="picker">
+        <text class="picker-label">月份：</text>
+        <text class="picker-value">{{currentMonth}}</text>
+        <text class="picker-arrow">▼</text>
+      </view>
+    </picker>
+  </view>
+
+  <view class="stats-card">
+    <view class="rate-circle">
+      <view class="circle-inner">
+        <text class="rate-value">{{attendanceRate}}%</text>
+        <text class="rate-label">出勤率</text>
+      </view>
+    </view>
+    <view class="stats-grid">
+      <view class="stat-item normal">
+        <text class="stat-value">{{normalCount}}</text>
+        <text class="stat-label">正常</text>
+      </view>
+      <view class="stat-item late">
+        <text class="stat-value">{{lateCount}}</text>
+        <text class="stat-label">迟到</text>
+      </view>
+      <view class="stat-item leave">
+        <text class="stat-value">{{leaveCount}}</text>
+        <text class="stat-label">请假</text>
+      </view>
+      <view class="stat-item absent">
+        <text class="stat-value">{{absentCount}}</text>
+        <text class="stat-label">缺勤</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">考勤明细</text>
+    </view>
+    <view class="attendance-list">
+      <view class="attendance-item" wx:for="{{attendanceList}}" wx:key="id">
+        <view class="item-left">
+          <text class="item-date">{{item.date}}</text>
+          <text class="item-week">第{{item.week}}周</text>
+        </view>
+        <view class="item-center">
+          <text class="item-course">{{item.course}}</text>
+        </view>
+        <view class="item-right">
+          <text class="status-tag status-{{getStatusClass(item.status)}}">{{getStatusText(item.status)}}</text>
+        </view>
+      </view>
+      <view class="empty-tip" wx:if="{{attendanceList.length === 0}}">
+        <text>暂无考勤数据</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,75 @@
+{
+  "pages": [
+    "pages/login/index",
+    "pages/index/index",
+    "pages/clubs/list",
+    "pages/clubs/detail",
+    "pages/clubs/apply",
+    "pages/clubs/my",
+    "pages/grades/index",
+    "pages/attendance/index",
+    "pages/signin/index",
+    "pages/messages/index",
+    "pages/messages/detail",
+    "pages/announcements/detail",
+    "pages/activities/list",
+    "pages/activities/detail",
+    "pages/activities/my",
+    "pages/awards/index",
+    "pages/feedback/index",
+    "pages/profile/index",
+    "pages/profile/edit",
+    "pages/settings/index",
+    "pages/about/index",
+    "pages/admin/index",
+    "pages/admin/dashboard/index",
+    "pages/admin/students/index",
+    "pages/admin/students/edit",
+    "pages/admin/clubs/index",
+    "pages/admin/clubs/edit",
+    "pages/admin/members/index",
+    "pages/admin/activities/index",
+    "pages/admin/signin/index",
+    "pages/admin/batch/index",
+    "pages/admin/warnings/index",
+    "pages/admin/activities/edit"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#1a73e8",
+    "navigationBarTitleText": "智慧校园",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f5f5f5"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#666666",
+    "selectedColor": "#1a73e8",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/clubs/list",
+        "text": "社团"
+      },
+      {
+        "pagePath": "pages/grades/index",
+        "text": "学情"
+      },
+      {
+        "pagePath": "pages/messages/index",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

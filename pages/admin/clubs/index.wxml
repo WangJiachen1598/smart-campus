@@ -1,0 +1,59 @@
+<view class="container">
+  <view class="header">
+    <view class="header-title">社团管理</view>
+    <view class="add-btn" bindtap="goAdd">
+      <text class="add-icon">+</text>
+      <text>新增社团</text>
+    </view>
+  </view>
+
+  <view class="filter-bar">
+    <view class="filter-item {{currentFilter === 'all' ? 'active' : ''}}" bindtap="switchFilter" data-filter="all">
+      <text>全部</text>
+    </view>
+    <view class="filter-item {{currentFilter === 'active' ? 'active' : ''}}" bindtap="switchFilter" data-filter="active">
+      <text>正常</text>
+    </view>
+    <view class="filter-item {{currentFilter === 'inactive' ? 'active' : ''}}" bindtap="switchFilter" data-filter="inactive">
+      <text>已下架</text>
+    </view>
+  </view>
+
+  <view class="club-list">
+    <view class="club-item" wx:for="{{clubList}}" wx:key="id">
+      <view class="club-cover">
+        <image wx:if="{{item.cover}}" src="{{item.cover}}" mode="aspectFill" />
+        <view wx:else class="cover-placeholder">
+          <text>🎯</text>
+        </view>
+      </view>
+      <view class="club-info">
+        <view class="club-header">
+          <text class="club-name">{{item.name}}</text>
+          <text class="status-tag {{item.status === 'active' ? 'status-active' : 'status-inactive'}}">
+            {{item.status === 'active' ? '正常' : '已下架'}}
+          </text>
+        </view>
+        <text class="club-meta">{{item.category}} · {{item.memberCount}}人</text>
+        <text class="club-leader">负责人：{{item.leader}}</text>
+        <text class="club-create">创建时间：{{item.createTime}}</text>
+      </view>
+      <view class="club-actions">
+        <view class="action-btn primary" bindtap="goEdit" data-id="{{item.id}}">
+          <text>编辑</text>
+        </view>
+        <view class="action-btn" bindtap="viewMembers" data-id="{{item.id}}">
+          <text>成员</text>
+        </view>
+        <view class="action-btn {{item.status === 'active' ? 'danger' : 'success'}}" bindtap="toggleStatus" data-id="{{item.id}}">
+          <text>{{item.status === 'active' ? '下架' : '上架'}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:if="{{clubList.length === 0}}">
+    <text class="empty-icon">🏠</text>
+    <text class="empty-text">暂无社团数据</text>
+  </view>
+</view>

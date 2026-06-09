@@ -1,0 +1,57 @@
+<view class="container">
+  <view class="header">
+    <view class="user-info">
+      <view class="avatar-wrapper">
+        <image class="avatar" wx:if="{{userInfo.avatar}}" src="{{userInfo.avatar}}" mode="aspectFill" catchtap="viewAvatar"></image>
+        <view class="avatar" wx:else style="width: 140rpx; height: 140rpx; border-radius: 50%; background: linear-gradient(135deg, #1a73e8, #0d47a1); display: flex; align-items: center; justify-content: center; color: white; font-size: 60rpx;" catchtap="viewAvatar">
+          {{userInfo.role === 'teacher' ? '👨‍🏫' : '👨‍🎓'}}
+        </view>
+        <view class="camera-icon" catchtap="chooseAvatar">
+          <text style="font-size: 28rpx;">📷</text>
+        </view>
+      </view>
+      <view class="user-detail">
+        <view class="name-row">
+          <text class="name">{{userInfo.name || '未登录'}}</text>
+          <text class="role-tag">{{getRoleLabel(userInfo.role)}}</text>
+        </view>
+        <text class="student-id" wx:if="{{userInfo.studentId}}">学号：{{userInfo.studentId}}</text>
+        <text class="class-name" wx:if="{{userInfo.className}}">班级：{{userInfo.className}}</text>
+        <text class="phone" wx:if="{{userInfo.phone}}">电话：{{userInfo.phone}}</text>
+        <text class="signature" wx:if="{{userInfo.signature}}">{{userInfo.signature}}</text>
+      </view>
+    </view>
+    <view class="edit-btn" bindtap="editProfile">
+      <text style="font-size: 40rpx;">✏️</text>
+    </view>
+  </view>
+
+  <view class="stats-card">
+    <view class="stat-item" wx:for="{{isTeacher ? teacherStats : studentStats}}" wx:key="key">
+      <text class="stat-value">{{item.value}}</text>
+      <text class="stat-label">{{item.label}}</text>
+    </view>
+  </view>
+
+  <view class="menu-card">
+    <view class="menu-item" wx:for="{{isTeacher ? teacherMenuList : studentMenuList}}" wx:key="id" bindtap="onMenuClick" data-path="{{item.path}}">
+      <view class="menu-left">
+        <view class="menu-icon" style="font-size: 36rpx;">{{item.icon}}</view>
+        <text class="menu-title">{{item.title}}</text>
+      </view>
+      <view class="menu-right">
+        <text style="font-size: 28rpx; color: #999;">›</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="logout-btn-wrapper">
+    <button class="btn btn-outline btn-block" bindtap="logout">退出登录</button>
+  </view>
+
+  <view class="version-info">
+    <text>智慧校园 v1.0.0</text>
+  </view>
+</view>
+
+<custom-tab-bar />

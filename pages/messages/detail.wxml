@@ -1,0 +1,36 @@
+<view class="container">
+  <view class="loading" wx:if="{{loading}}">
+    <view class="loading-dot"></view>
+    <view class="loading-dot"></view>
+    <view class="loading-dot"></view>
+  </view>
+
+  <view class="content" wx:if="{{message && !loading}}">
+    <view class="header">
+      <view class="sender-info">
+        <view class="sender-avatar" style="width: 80rpx; height: 80rpx; border-radius: 50%; background: linear-gradient(135deg, #1a73e8, #0d47a1); display: flex; align-items: center; justify-content: center; color: white; font-size: 32rpx;">👤</view>
+        <view class="sender-detail">
+          <text class="sender-name">{{message.sender}}</text>
+          <text class="send-time">{{message.createTime}}</text>
+        </view>
+      </view>
+      <text class="tag {{getTypeClass(message.type)}}">{{getTypeText(message.type)}}</text>
+    </view>
+
+    <view class="message-body">
+      <view class="message-title">{{message.title}}</view>
+      <view class="message-content">{{message.content}}</view>
+    </view>
+
+    <view class="footer">
+      <view class="footer-actions">
+        <button class="btn btn-secondary btn-block" open-type="share">分享</button>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:if="{{!message && !loading}}">
+    <text style="font-size: 64rpx;">📭</text>
+    <text>消息不存在</text>
+  </view>
+</view>

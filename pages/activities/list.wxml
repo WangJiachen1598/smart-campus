@@ -1,0 +1,55 @@
+<view class="container">
+  <view class="tab-section">
+    <view class="tab-list">
+      <view class="tab-item {{currentTab === 0 ? 'active' : ''}}" 
+            bindtap="onTabChange" data-index="0">
+        <text>全部活动</text>
+      </view>
+      <view class="tab-item {{currentTab === 1 ? 'active' : ''}}" 
+            bindtap="onTabChange" data-index="1">
+        <text>已报名</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="activity-list">
+    <view class="activity-card" 
+          wx:for="{{currentTab === 0 ? activities : registeredActivities}}" 
+          wx:key="id"
+          bindtap="goDetail" data-id="{{item.id}}">
+      <image class="activity-cover" src="{{item.cover}}" mode="aspectFill"></image>
+      <view class="activity-content">
+        <view class="activity-header">
+          <text class="activity-title">{{item.title}}</text>
+          <view class="tag" style="background: {{item.statusColor}}15; color: {{item.statusColor}};">
+            {{item.statusLabel}}
+          </view>
+        </view>
+        <view class="activity-info">
+          <view class="info-item">
+            <image class="info-icon" src="/assets/icons/time.png" mode="aspectFit"></image>
+            <text>{{item.startTime}}</text>
+          </view>
+          <view class="info-item">
+            <image class="info-icon" src="/assets/icons/location.png" mode="aspectFit"></image>
+            <text>{{item.location}}</text>
+          </view>
+        </view>
+        <view class="activity-stats">
+          <text class="stat-text">报名 {{item.participantCount}} 人 · 签到 {{item.signInCount}} 人</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="empty-state" wx:if="{{!loading && (currentTab === 0 ? activities.length === 0 : registeredActivities.length === 0)}}">
+      <image src="/assets/images/empty.png" mode="aspectFit"></image>
+      <text>暂无活动</text>
+    </view>
+
+    <view class="loading" wx:if="{{loading}}">
+      <view class="loading-dot"></view>
+      <view class="loading-dot"></view>
+      <view class="loading-dot"></view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,138 @@
+<view class="container">
+  <view class="tabs">
+    <view 
+      class="tab-item {{currentTab === 0 ? 'active' : ''}}" 
+      bindtap="onTabChange" 
+      data-index="0"
+    >
+      提交反馈
+    </view>
+    <view 
+      class="tab-item {{currentTab === 1 ? 'active' : ''}}" 
+      bindtap="onTabChange" 
+      data-index="1"
+    >
+      历史记录
+    </view>
+  </view>
+
+  <view class="tab-content" wx:if="{{currentTab === 0}}">
+    <view class="card">
+      <view class="card-title">反馈类型</view>
+      <view class="type-list">
+        <view 
+          class="type-item {{feedbackType === 'suggestion' ? 'active' : ''}}" 
+          bindtap="onTypeChange" 
+          data-type="suggestion"
+        >
+          <text class="type-icon">💡</text>
+          <text>建议</text>
+        </view>
+        <view 
+          class="type-item {{feedbackType === 'bug' ? 'active' : ''}}" 
+          bindtap="onTypeChange" 
+          data-type="bug"
+        >
+          <text class="type-icon">🐛</text>
+          <text>问题反馈</text>
+        </view>
+        <view 
+          class="type-item {{feedbackType === 'complaint' ? 'active' : ''}}" 
+          bindtap="onTypeChange" 
+          data-type="complaint"
+        >
+          <text class="type-icon">⚠️</text>
+          <text>投诉</text>
+        </view>
+        <view 
+          class="type-item {{feedbackType === 'other' ? 'active' : ''}}" 
+          bindtap="onTypeChange" 
+          data-type="other"
+        >
+          <text class="type-icon">📝</text>
+          <text>其他</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="card-title">反馈内容</view>
+      <textarea 
+        class="textarea" 
+        placeholder="请详细描述您的反馈，我们会认真对待..." 
+        value="{{feedbackContent}}"
+        bindinput="onContentInput"
+        maxlength="500"
+      ></textarea>
+      <view class="char-count">{{feedbackContent.length}}/500</view>
+    </view>
+
+    <view class="card">
+      <view class="card-title">上传图片（选填，最多3张）</view>
+      <view class="image-list">
+        <view 
+          class="image-item" 
+          wx:for="{{images}}" 
+          wx:key="*this"
+          bindtap="previewImage"
+          data-url="{{item}}"
+        >
+          <image class="image" src="{{item}}" mode="aspectFill"></image>
+          <view class="remove-btn" bindtap="removeImage" data-index="{{index}}">
+            <text class="remove-icon">×</text>
+          </view>
+        </view>
+        <view class="add-btn" wx:if="{{images.length < 3}}" bindtap="chooseImage">
+          <text class="add-icon">+</text>
+          <text class="add-text">添加图片</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="submit-btn-wrapper">
+      <button class="btn btn-primary btn-block" bindtap="submitFeedback">提交反馈</button>
+    </view>
+  </view>
+
+  <view class="tab-content" wx:if="{{currentTab === 1}}">
+    <view class="loading" wx:if="{{loading}}">
+      <view class="loading-dot"></view>
+      <view class="loading-dot"></view>
+      <view class="loading-dot"></view>
+    </view>
+
+    <view class="history-list" wx:else>
+      <view class="history-item" wx:for="{{historyList}}" wx:key="id">
+        <view class="history-header">
+          <view class="header-left">
+            <text class="tag {{getTypeClass(item.type)}}">{{getTypeText(item.type)}}</text>
+            <text class="history-time">{{item.createTime}}</text>
+          </view>
+          <text class="tag {{getStatusClass(item.status)}}">{{getStatusText(item.status)}}</text>
+        </view>
+        <view class="history-content">{{item.content}}</view>
+        <view class="image-list small" wx:if="{{item.images && item.images.length > 0}}">
+          <image 
+            class="image small" 
+            wx:for="{{item.images}}" 
+            wx:for-item="img" 
+            wx:key="*this"
+            src="{{img}}" 
+            mode="aspectFill"
+            bindtap="previewImage"
+            data-url="{{img}}"
+          ></image>
+        </view>
+        <view class="history-reply" wx:if="{{item.reply}}">
+          <view class="reply-label">回复：</view>
+          <view class="reply-content">{{item.reply}}</view>
+        </view>
+      </view>
+
+      <view class="empty-state" wx:if="{{historyList.length === 0}}">
+        <text style="font-size: 64rpx;">📭</text>
+        <text>暂无反馈记录</text>
+      </view>
+    </view>
+  </view>
+</view>

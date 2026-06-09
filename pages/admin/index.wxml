@@ -1,0 +1,129 @@
+<view class="custom-navbar">
+  <view class="navbar-bg"></view>
+  <view class="navbar-content">
+    <view class="navbar-left" bindtap="goHome">
+      <text class="home-icon">🏠</text>
+      <text class="home-text">首页</text>
+    </view>
+    <view class="navbar-title">管理中心</view>
+    <view class="navbar-right"></view>
+  </view>
+</view>
+<view class="container">
+  <view class="header">
+    <view class="header-top">
+      <view class="user-info">
+        <view class="user-avatar" style="width: 96rpx; height: 96rpx; border-radius: 50%; background: linear-gradient(135deg, #1a73e8, #0d47a1); display: flex; align-items: center; justify-content: center; color: white; font-size: 40rpx;">
+          👤
+        </view>
+        <view class="user-detail">
+          <text class="user-name">{{userInfo.name || '管理员'}}</text>
+          <text class="user-role">管理员</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="category-tab-bar">
+    <view class="tab-item {{currentTab === 'all' ? 'active' : ''}}" bindtap="switchTab" data-tab="all">
+      <text>全部</text>
+    </view>
+    <view class="tab-item {{currentTab === 'student' ? 'active' : ''}}" bindtap="switchTab" data-tab="student">
+      <text>学生</text>
+    </view>
+    <view class="tab-item {{currentTab === 'club' ? 'active' : ''}}" bindtap="switchTab" data-tab="club">
+      <text>社团</text>
+    </view>
+    <view class="tab-item {{currentTab === 'activity' ? 'active' : ''}}" bindtap="switchTab" data-tab="activity">
+      <text>活动</text>
+    </view>
+  </view>
+
+  <view class="dashboard-cards">
+    <view class="stat-card" bindtap="goStudentManage">
+      <view class="stat-value">{{dashboardData.overview.studentCount}}</view>
+      <view class="stat-label">学生人数</view>
+    </view>
+    <view class="stat-card" bindtap="goClubManage">
+      <view class="stat-value">{{dashboardData.overview.clubCount}}</view>
+      <view class="stat-label">社团数量</view>
+    </view>
+    <view class="stat-card" bindtap="goActivityPublish">
+      <view class="stat-value">{{dashboardData.overview.activityCount}}</view>
+      <view class="stat-label">活动数量</view>
+    </view>
+    <view class="stat-card warning-card" bindtap="goMemberApproval">
+      <view class="stat-value">{{dashboardData.overview.pendingApproval}}</view>
+      <view class="stat-label">待审批</view>
+    </view>
+  </view>
+
+  <view class="quick-actions">
+    <view class="section-title">快捷操作</view>
+    <view class="action-grid">
+      <view class="action-item" wx:if="{{currentTab === 'all' || currentTab === 'student'}}" bindtap="goStudentManage">
+        <view class="action-icon" style="background: linear-gradient(135deg, #1a73e8, #0d47a1);">
+          <text class="action-icon-text">👨‍🎓</text>
+        </view>
+        <text class="action-text">学生管理</text>
+      </view>
+      <view class="action-item" wx:if="{{currentTab === 'all' || currentTab === 'student'}}" bindtap="goDashboard">
+        <view class="action-icon" style="background: linear-gradient(135deg, #4caf50, #388e3c);">
+          <text class="action-icon-text">📊</text>
+        </view>
+        <text class="action-text">学情看板</text>
+      </view>
+      <view class="action-item" wx:if="{{currentTab === 'all' || currentTab === 'club'}}" bindtap="goClubManage">
+        <view class="action-icon" style="background: linear-gradient(135deg, #2196f3, #1976d2);">
+          <text class="action-icon-text">🏠</text>
+        </view>
+        <text class="action-text">社团管理</text>
+      </view>
+      <view class="action-item" wx:if="{{currentTab === 'all' || currentTab === 'club'}}" bindtap="goMemberApproval">
+        <view class="action-icon" style="background: linear-gradient(135deg, #f44336, #d32f2f);">
+          <text class="action-icon-text">👥</text>
+        </view>
+        <text class="action-text">成员审批</text>
+      </view>
+      <view class="action-item" wx:if="{{currentTab === 'all' || currentTab === 'activity'}}" bindtap="goActivityPublish">
+        <view class="action-icon" style="background: linear-gradient(135deg, #ff9800, #f57c00);">
+          <text class="action-icon-text">🎉</text>
+        </view>
+        <text class="action-text">活动发布</text>
+      </view>
+      <view class="action-item" wx:if="{{currentTab === 'all' || currentTab === 'activity'}}" bindtap="goSigninManage">
+        <view class="action-icon" style="background: linear-gradient(135deg, #9c27b0, #7b1fa2);">
+          <text class="action-icon-text">✅</text>
+        </view>
+        <text class="action-text">签到管理</text>
+      </view>
+      <view class="action-item" wx:if="{{currentTab === 'all'}}" bindtap="goBatchManage">
+        <view class="action-icon" style="background: linear-gradient(135deg, #00bcd4, #0097a7);">
+          <text class="action-icon-text">📋</text>
+        </view>
+        <text class="action-text">批量管理</text>
+      </view>
+      <view class="action-item" wx:if="{{currentTab === 'all'}}" bindtap="goWarnings">
+        <view class="action-icon" style="background: linear-gradient(135deg, #ff5722, #e64a19);">
+          <text class="action-icon-text">⚠️</text>
+        </view>
+        <text class="action-text">异常预警</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="recent-section">
+    <view class="section-title">最近动态</view>
+    <view class="recent-list">
+      <view class="recent-item" wx:for="{{recentActivities}}" wx:key="id">
+        <view class="recent-dot"></view>
+        <view class="recent-content">
+          <text class="recent-title">{{item.title}}</text>
+          <text class="recent-time">{{item.time}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<custom-tab-bar />

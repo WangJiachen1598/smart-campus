@@ -1,0 +1,153 @@
+.container {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding-bottom: 40rpx;
+}
+
+.avatar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+
+.avatar-wrapper {
+  position: relative;
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 16rpx;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+}
+
+.camera-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3rpx solid #fff;
+}
+
+.avatar-tip {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.form-section {
+  background: #fff;
+  padding: 0 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.form-item {
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #f5f5f5;
+}
+
+.form-item:last-child {
+  border-bottom: none;
+}
+
+.form-label {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 16rpx;
+  font-weight: 500;
+}
+
+.required {
+  color: #f44336;
+}
+
+.form-input {
+  width: 100%;
+  font-size: 28rpx;
+  color: #333;
+  padding: 0;
+}
+
+.form-textarea {
+  width: 100%;
+  min-height: 120rpx;
+  font-size: 28rpx;
+  color: #333;
+  padding: 0;
+}
+
+.char-count {
+  text-align: right;
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 8rpx;
+}
+
+.gender-options,
+.status-options {
+  display: flex;
+  gap: 16rpx;
+}
+
+.gender-option,
+.status-option {
+  flex: 1;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2rpx solid #e5e5e5;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  color: #666;
+  transition: all 0.3s;
+}
+
+.gender-option.active,
+.status-option.active {
+  border-color: #1a73e8;
+  background: rgba(26, 115, 232, 0.08);
+  color: #1a73e8;
+}
+
+.picker-text {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.btn-section {
+  display: flex;
+  gap: 24rpx;
+  padding: 0 30rpx;
+}
+
+.btn {
+  flex: 1;
+  height: 96rpx;
+  border-radius: 50rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  border: none;
+}
+
+.btn-cancel {
+  background: #f5f5f5;
+  color: #666;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #1a73e8, #0d47a1);
+  color: #fff;
+}

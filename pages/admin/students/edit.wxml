@@ -1,0 +1,85 @@
+<view class="container">
+  <view class="avatar-section">
+    <view class="avatar-wrapper" bindtap="chooseAvatar">
+      <image class="avatar-img" wx:if="{{formData.avatar}}" src="{{formData.avatar}}" mode="aspectFill" />
+      <view class="avatar-placeholder" wx:else style="width: 100%; height: 100%; background: linear-gradient(135deg, #1a73e8, #0d47a1); display: flex; align-items: center; justify-content: center; color: white; font-size: 48rpx;">
+        👨‍🎓
+      </view>
+      <view class="camera-icon">
+        <text style="font-size: 24rpx;">📷</text>
+      </view>
+    </view>
+    <text class="avatar-tip">点击更换头像</text>
+  </view>
+
+  <view class="form-section">
+    <view class="form-item">
+      <text class="form-label">姓名 <text class="required">*</text></text>
+      <input class="form-input" placeholder="请输入学生姓名" value="{{formData.name}}" bindinput="onNameInput" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">学号 <text class="required">*</text></text>
+      <input class="form-input" placeholder="请输入学号" value="{{formData.studentId}}" bindinput="onStudentIdInput" type="number" maxlength="10" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">性别 <text class="required">*</text></text>
+      <view class="gender-options">
+        <view class="gender-option {{formData.gender === 'male' ? 'active' : ''}}" bindtap="selectGender" data-gender="male">
+          <text>男</text>
+        </view>
+        <view class="gender-option {{formData.gender === 'female' ? 'active' : ''}}" bindtap="selectGender" data-gender="female">
+          <text>女</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">班级 <text class="required">*</text></text>
+      <input class="form-input" placeholder="请输入班级" value="{{formData.className}}" bindinput="onClassNameInput" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">联系电话</text>
+      <input class="form-input" placeholder="请输入联系电话" value="{{formData.phone}}" bindinput="onPhoneInput" type="number" maxlength="11" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">电子邮箱</text>
+      <input class="form-input" placeholder="请输入电子邮箱" value="{{formData.email}}" bindinput="onEmailInput" />
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">入学日期</text>
+      <picker mode="date" value="{{formData.enrollDate}}" bindchange="onEnrollDateChange">
+        <view class="picker-text">
+          {{formData.enrollDate || '请选择入学日期'}}
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">状态</text>
+      <view class="status-options">
+        <view class="status-option {{formData.status === 'active' ? 'active' : ''}}" bindtap="selectStatus" data-status="active">
+          <text>在读</text>
+        </view>
+        <view class="status-option {{formData.status === 'inactive' ? 'active' : ''}}" bindtap="selectStatus" data-status="inactive">
+          <text>休学</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="form-item">
+      <text class="form-label">备注</text>
+      <textarea class="form-textarea" placeholder="请输入备注信息（选填）" value="{{formData.remark}}" bindinput="onRemarkInput" maxlength="200" />
+      <view class="char-count">{{formData.remark.length}}/200</view>
+    </view>
+  </view>
+
+  <view class="btn-section">
+    <button class="btn btn-cancel" bindtap="onCancel">取消</button>
+    <button class="btn btn-primary" bindtap="onSave" loading="{{saving}}">保存</button>
+  </view>
+</view>

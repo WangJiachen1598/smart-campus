@@ -1,0 +1,60 @@
+<view class="container">
+  <view class="header">
+    <view class="header-title">批量导入</view>
+  </view>
+
+  <view class="import-section">
+    <view class="section-title">1. 选择导入类型</view>
+    <picker mode="selector" range="{{templateNames}}" bindchange="onTypeChange">
+      <view class="type-picker">
+        <text>{{selectedTemplateName}}</text>
+        <text class="arrow">▼</text>
+      </view>
+    </picker>
+  </view>
+
+  <view class="import-section">
+    <view class="section-title">2. 下载模板</view>
+    <view class="template-card" bindtap="downloadTemplate">
+      <view class="template-icon">📥</view>
+      <view class="template-info">
+        <text class="template-name">点击下载模板</text>
+        <text class="template-desc">按照模板格式填写数据</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="import-section">
+    <view class="section-title">3. 上传文件</view>
+    <view class="upload-area" bindtap="chooseFile">
+      <view class="upload-icon">📁</view>
+      <text class="upload-text">点击选择文件</text>
+      <text class="upload-hint">支持 xlsx, xls 格式</text>
+    </view>
+    <view class="file-list" wx:if="{{fileList.length > 0}}">
+      <view class="file-item" wx:for="{{fileList}}" wx:key="name">
+        <text class="file-name">{{item.name}}</text>
+        <text class="file-status">已选择</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="import-section">
+    <view class="section-title">4. 开始导入</view>
+    <button class="import-btn" type="primary" bindtap="importData">开始导入</button>
+  </view>
+
+  <view class="import-section">
+    <view class="section-title">导入历史</view>
+    <view class="history-list">
+      <view class="history-item" wx:for="{{historyList}}" wx:key="id">
+        <view class="history-icon">✓</view>
+        <view class="history-info">
+          <text class="history-name">{{item.fileName}}</text>
+          <text class="history-meta">{{item.time}} · 导入 {{item.count}} 条</text>
+        </view>
+        <view class="history-status success">成功</view>
+      </view>
+    </view>
+  </view>
+</view>

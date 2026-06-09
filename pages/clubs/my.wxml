@@ -1,0 +1,70 @@
+<view class="container">
+  <view class="tabs">
+    <view class="tab-item {{currentTab === 0 ? 'active' : ''}}" bindtap="onTabChange" data-index="0">
+      <text>我的社团</text>
+    </view>
+    <view class="tab-item {{currentTab === 1 ? 'active' : ''}}" bindtap="onTabChange" data-index="1">
+      <text>待审批</text>
+    </view>
+  </view>
+
+  <swiper class="swiper" current="{{currentTab}}" bindchange="onTabChange">
+    <swiper-item>
+      <view class="club-list">
+        <view class="club-card" wx:for="{{myClubs}}" wx:key="id" bindtap="goClubDetail" data-id="{{item.id}}">
+          <view class="club-cover" style="background: linear-gradient(135deg, #1a73e8, #0d47a1); display: flex; align-items: center; justify-content: center; color: white; font-size: 60rpx;">🎯</view>
+          <view class="club-info">
+            <view class="club-header">
+              <text class="club-name">{{item.name}}</text>
+              <text class="tag tag-success">已加入</text>
+            </view>
+            <text class="club-desc">{{item.description}}</text>
+            <view class="club-stats">
+              <view class="stat-item">
+                <text>{{item.memberCount}}人</text>
+              </view>
+              <view class="stat-item">
+                <text>{{item.activityCount}}活动</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        
+        <view class="empty-state" wx:if="{{!loading && myClubs.length === 0}}">
+          <text style="font-size: 64rpx;">📭</text>
+          <text>还没有加入任何社团</text>
+          <text class="hint">快去「社团」列表报名吧</text>
+        </view>
+      </view>
+    </swiper-item>
+
+    <swiper-item>
+      <view class="club-list">
+        <view class="club-card pending" wx:for="{{pendingClubs}}" wx:key="id">
+          <view class="club-cover" style="background: linear-gradient(135deg, #ff9800, #f57c00); display: flex; align-items: center; justify-content: center; color: white; font-size: 60rpx;">🎯</view>
+          <view class="club-info">
+            <view class="club-header">
+              <text class="club-name">{{item.name}}</text>
+              <text class="tag tag-warning">待审批</text>
+            </view>
+            <text class="club-desc">申请时间：{{item.applyTime}}</text>
+            <button class="btn btn-outline btn-sm" bindtap="cancelApply" data-index="{{index}}">
+              取消申请
+            </button>
+          </view>
+        </view>
+        
+        <view class="empty-state" wx:if="{{!loading && pendingClubs.length === 0}}">
+          <text style="font-size: 64rpx;">✓</text>
+          <text>没有待审批的申请</text>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+
+  <view class="loading" wx:if="{{loading}}">
+    <view class="loading-dot"></view>
+    <view class="loading-dot"></view>
+    <view class="loading-dot"></view>
+  </view>
+</view>

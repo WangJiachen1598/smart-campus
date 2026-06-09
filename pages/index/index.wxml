@@ -1,0 +1,121 @@
+<view class="container">
+  <view class="header">
+    <view class="user-info">
+      <image class="avatar" wx:if="{{userInfo.avatar}}" src="{{userInfo.avatar}}" mode="aspectFill" style="width: 96rpx; height: 96rpx; border-radius: 50%;"></image>
+      <view class="avatar" wx:else style="width: 96rpx; height: 96rpx; border-radius: 50%; background: linear-gradient(135deg, #1a73e8, #0d47a1); display: flex; align-items: center; justify-content: center; color: white; font-size: 40rpx;">
+        👤
+      </view>
+      <view class="user-detail">
+        <text class="username">{{userInfo.name || '未登录'}}</text>
+        <text class="user-role">{{userInfo.role === 'teacher' ? '教师' : userInfo.role === 'admin' ? '管理员' : '学生'}}</text>
+      </view>
+    </view>
+    <view class="header-actions">
+      <view class="message-badge" bindtap="goMessages">
+        <view class="icon" style="width: 48rpx; height: 48rpx; display: flex; align-items: center; justify-content: center; font-size: 32rpx;">💬</view>
+        <view class="badge" wx:if="{{unreadCount > 0}}">{{unreadCount > 99 ? '99+' : unreadCount}}</view>
+      </view>
+    </view>
+  </view>
+
+  <swiper class="banner" indicator-dots autoplay interval="3000" circular>
+    <swiper-item wx:for="{{banners}}" wx:key="id">
+      <view class="banner-image" style="height: 300rpx; background: linear-gradient(135deg, #1a73e8, #0d47a1); display: flex; align-items: center; justify-content: center; color: white; font-size: 36rpx;" bindtap="goBanner" data-link="{{item.link}}">
+        📢 {{item.title}}
+      </view>
+    </swiper-item>
+  </swiper>
+
+  <view class="quick-actions">
+    <view class="action-item" wx:for="{{quickActions}}" wx:key="id" bindtap="goQuickAction" data-path="{{item.path}}">
+      <view class="action-icon" style="width: 120rpx; height: 120rpx; border-radius: 24rpx; background: linear-gradient(135deg, #1a73e8, #0d47a1); display: flex; align-items: center; justify-content: center; color: white; font-size: 48rpx;">
+        {{item.name === '社团报名' ? '🎯' : item.name === '活动签到' ? '📱' : item.name === '成绩查询' ? '📊' : '📋'}}
+      </view>
+      <text class="action-name">{{item.name}}</text>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">通知公告</text>
+      <text class="section-more" bindtap="goAllAnnouncements">查看全部</text>
+    </view>
+    <view class="announcement-list">
+      <view class="announcement-item" wx:for="{{announcements}}" wx:key="id" bindtap="goAnnouncement" data-id="{{item.id}}">
+        <view class="announcement-content">
+          <text class="announcement-title {{item.important ? 'important' : ''}}">{{item.title}}</text>
+          <text class="announcement-time">{{item.time}}</text>
+        </view>
+        <text class="tag tag-danger" wx:if="{{item.important}}">重要</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">近期活动</text>
+      <text class="section-more" bindtap="goAllActivities">全部活动</text>
+    </view>
+    <view class="activity-list">
+      <view class="activity-card" wx:for="{{recentActivities}}" wx:key="id" bindtap="goActivity" data-id="{{item.id}}">
+        <view class="activity-info">
+          <text class="activity-title">{{item.title}}</text>
+          <text class="activity-meta">{{item.club}} · {{item.time}}</text>
+        </view>
+        <view class="activity-status">
+          <text class="tag {{item.status === 'upcoming' ? 'tag-primary' : item.status === 'ongoing' ? 'tag-success' : 'tag-gray'}}">
+            {{item.statusText}}
+          </text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section teacher-section" wx:if="{{isTeacher}}">
+    <view class="section-header">
+      <text class="section-title">管理快捷入口</text>
+      <text class="section-more" bindtap="goAdminCenter">管理中心</text>
+    </view>
+    <view class="admin-grid">
+      <view class="admin-item" bindtap="goAdminStudents">
+        <view class="admin-icon" style="background: linear-gradient(135deg, #1a73e8, #0d47a1); display: flex; align-items: center; justify-content: center; font-size: 32rpx;">👨‍🎓</view>
+        <text class="admin-name">学生管理</text>
+      </view>
+      <view class="admin-item" bindtap="goAdminDashboard">
+        <view class="admin-icon" style="background: linear-gradient(135deg, #4caf50, #388e3c); display: flex; align-items: center; justify-content: center; font-size: 32rpx;">📊</view>
+        <text class="admin-name">学情看板</text>
+      </view>
+      <view class="admin-item" bindtap="goAdminClubs">
+        <view class="admin-icon" style="background: linear-gradient(135deg, #2196f3, #1976d2); display: flex; align-items: center; justify-content: center; font-size: 32rpx;">🏠</view>
+        <text class="admin-name">社团管理</text>
+      </view>
+      <view class="admin-item" bindtap="goAdminMembers">
+        <view class="admin-icon" style="background: linear-gradient(135deg, #f44336, #d32f2f); display: flex; align-items: center; justify-content: center; font-size: 32rpx;">👥</view>
+        <text class="admin-name">成员审批</text>
+      </view>
+      <view class="admin-item" bindtap="goAdminActivities">
+        <view class="admin-icon" style="background: linear-gradient(135deg, #ff9800, #f57c00); display: flex; align-items: center; justify-content: center; font-size: 32rpx;">🎉</view>
+        <text class="admin-name">活动发布</text>
+      </view>
+      <view class="admin-item" bindtap="goAdminSignin">
+        <view class="admin-icon" style="background: linear-gradient(135deg, #9c27b0, #7b1fa2); display: flex; align-items: center; justify-content: center; font-size: 32rpx;">✅</view>
+        <text class="admin-name">签到管理</text>
+      </view>
+      <view class="admin-item" bindtap="goAdminBatch">
+        <view class="admin-icon" style="background: linear-gradient(135deg, #00bcd4, #0097a7); display: flex; align-items: center; justify-content: center; font-size: 32rpx;">📋</view>
+        <text class="admin-name">批量管理</text>
+      </view>
+      <view class="admin-item" bindtap="goAdminWarnings">
+        <view class="admin-icon" style="background: linear-gradient(135deg, #ff5722, #e64a19); display: flex; align-items: center; justify-content: center; font-size: 32rpx;">⚠️</view>
+        <text class="admin-name">异常预警</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="fab" bindtap="goSignIn" wx:if="{{!isTeacher}}">
+  <view style="font-size: 36rpx;">📱</view>
+  <text>签到</text>
+</view>
+
+<custom-tab-bar />

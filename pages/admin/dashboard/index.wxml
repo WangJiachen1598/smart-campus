@@ -1,0 +1,80 @@
+<view class="custom-navbar">
+  <view class="navbar-bg"></view>
+  <view class="navbar-content">
+    <view class="navbar-left" bindtap="goHome">
+      <text class="home-icon">🏠</text>
+      <text class="home-text">首页</text>
+    </view>
+    <view class="navbar-title">学情看板</view>
+    <view class="navbar-right"></view>
+  </view>
+</view>
+<view class="container">
+  <view class="filter-section">
+    <view class="filter-title">班级筛选</view>
+    <picker bindchange="onClassChange" value="0" range="{{['计算机2101班','计算机2102班','软件工程2101班','网络工程2101班']}}">
+      <view class="picker-view">
+        <text>{{currentClass}}</text>
+        <text class="picker-arrow">▼</text>
+      </view>
+    </picker>
+  </view>
+
+  <view class="overview-cards">
+    <view class="overview-card">
+      <text class="overview-value">36</text>
+      <text class="overview-label">班级人数</text>
+    </view>
+    <view class="overview-card">
+      <text class="overview-value">92%</text>
+      <text class="overview-label">平均出勤率</text>
+    </view>
+    <view class="overview-card warning">
+      <text class="overview-value">5</text>
+      <text class="overview-label">不及格人数</text>
+    </view>
+    <view class="overview-card">
+      <text class="overview-value">85.6</text>
+      <text class="overview-label">综测平均分</text>
+    </view>
+  </view>
+
+  <view class="chart-section">
+    <view class="chart-title">班级考勤率对比</view>
+    <view class="bar-chart">
+      <view class="bar-item" wx:for="{{attendanceData}}" wx:key="className">
+        <view class="bar-label">{{item.className}}</view>
+        <view class="bar-container">
+          <view class="bar" style="height: {{item.rate}}%;"></view>
+        </view>
+        <view class="bar-value">{{item.rate}}%</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="chart-section">
+    <view class="chart-title">成绩分布</view>
+    <view class="pie-chart">
+      <view class="pie-item" wx:for="{{gradeData}}" wx:key="label">
+        <view class="pie-color" style="background: {{index === 0 ? '#4caf50' : index === 1 ? '#8bc34a' : index === 2 ? '#ffeb3b' : '#f44336'}};"></view>
+        <text class="pie-label">{{item.label}}</text>
+        <text class="pie-value">{{item.count}}人</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="warning-section">
+    <view class="section-title">异常预警</view>
+    <view class="warning-list">
+      <view class="warning-item warning-{{item.level}}" wx:for="{{warnings}}" wx:key="studentId">
+        <view class="warning-dot"></view>
+        <view class="warning-content">
+          <text class="warning-name">{{item.name}} - {{item.className}}</text>
+          <text class="warning-desc">{{item.description}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<custom-tab-bar />

@@ -1,0 +1,50 @@
+<view class="container">
+  <view class="header">
+    <view class="header-title">活动发布管理</view>
+    <view class="add-btn" bindtap="goAddActivity">
+      <text class="add-icon">+</text>
+      <text>发布活动</text>
+    </view>
+  </view>
+
+  <view class="filter-bar">
+    <picker mode="selector" range="{{clubs}}" range-key="name" bindchange="onClubChange">
+      <view class="filter-item">
+        <text>选择社团</text>
+        <text class="arrow">▼</text>
+      </view>
+    </picker>
+    <picker mode="selector" range="{{statusOptions}}" bindchange="onStatusChange">
+      <view class="filter-item">
+        <text>选择状态</text>
+        <text class="arrow">▼</text>
+      </view>
+    </picker>
+  </view>
+
+  <view class="activity-list">
+    <view class="activity-item" wx:for="{{activities}}" wx:key="id">
+      <view class="activity-info">
+        <view class="activity-title">{{item.title}}</view>
+        <view class="activity-meta">
+          <text class="tag tag-{{item.status}}">{{item.statusText}}</text>
+          <text class="meta-text">{{item.startTime}}</text>
+          <text class="meta-text">{{item.location}}</text>
+        </view>
+        <view class="activity-stats">
+          <text>报名: {{item.signInCount}}/{{item.participantCount}}</text>
+        </view>
+      </view>
+      <view class="activity-actions">
+        <view class="action-btn" bindtap="viewActivity" data-id="{{item.id}}">查看</view>
+        <view class="action-btn" bindtap="editActivity" data-id="{{item.id}}">编辑</view>
+        <view class="action-btn danger" bindtap="deleteActivity" data-id="{{item.id}}">删除</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:if="{{activities.length === 0}}">
+    <text class="empty-icon">📭</text>
+    <text class="empty-text">暂无活动</text>
+  </view>
+</view>

@@ -1,0 +1,64 @@
+<view class="container">
+  <view class="header">
+    <view class="logo">
+      <view class="logo-icon" style="width: 160rpx; height: 160rpx; border-radius: 32rpx; background: linear-gradient(135deg, #1a73e8, #0d47a1); display: flex; align-items: center; justify-content: center; color: white; font-size: 80rpx;">
+        🏫
+      </view>
+    </view>
+    <view class="app-name">智慧校园</view>
+    <view class="app-version">版本 1.0.0</view>
+  </view>
+
+  <view class="card">
+    <view class="about-item" bindtap="checkUpdate">
+      <view class="item-left">
+        <text class="item-icon">🔄</text>
+        <text class="item-name">检查更新</text>
+      </view>
+      <text class="item-right">已是最新版本</text>
+    </view>
+    <view class="about-item" bindtap="showAgreement">
+      <view class="item-left">
+        <text class="item-icon">📄</text>
+        <text class="item-name">用户协议</text>
+      </view>
+      <text class="item-arrow">›</text>
+    </view>
+    <view class="about-item" bindtap="showPrivacy">
+      <view class="item-left">
+        <text class="item-icon">🔒</text>
+        <text class="item-name">隐私政策</text>
+      </view>
+      <text class="item-arrow">›</text>
+    </view>
+    <view class="about-item" bindtap="showLicenses">
+      <view class="item-left">
+        <text class="item-icon">📜</text>
+        <text class="item-name">开放许可</text>
+      </view>
+      <text class="item-arrow">›</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="about-item" bindtap="goFeedback">
+      <view class="item-left">
+        <text class="item-icon">💬</text>
+        <text class="item-name">意见反馈</text>
+      </view>
+      <text class="item-arrow">›</text>
+    </view>
+    <view class="about-item" bindtap="shareApp">
+      <view class="item-left">
+        <text class="item-icon">👥</text>
+        <text class="item-name">分享给好友</text>
+      </view>
+      <text class="item-arrow">›</text>
+    </view>
+  </view>
+
+  <view class="footer">
+    <text class="footer-text">© 2024 智慧校园</text>
+    <text class="footer-text">All rights reserved</text>
+  </view>
+</view>

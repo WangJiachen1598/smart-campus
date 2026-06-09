@@ -1,0 +1,34 @@
+<view class="container">
+  <view class="loading" wx:if="{{loading}}">
+    <view class="loading-dot"></view>
+    <view class="loading-dot"></view>
+    <view class="loading-dot"></view>
+  </view>
+
+  <view class="content" wx:if="{{announcement && !loading}}">
+    <view class="header">
+      <view class="announcement-header">
+        <text class="announcement-title">{{announcement.title}}</text>
+        <view class="announcement-meta">
+          <text class="meta-item">{{announcement.createTime}}</text>
+          <text class="tag tag-danger" wx:if="{{announcement.important}}">重要</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="announcement-body">
+      <view class="announcement-content">{{announcement.content}}</view>
+    </view>
+
+    <view class="footer">
+      <view class="footer-actions">
+        <button class="btn btn-secondary btn-block" open-type="share">分享</button>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:if="{{!announcement && !loading}}">
+    <text style="font-size: 64rpx;">📢</text>
+    <text>公告不存在</text>
+  </view>
+</view>

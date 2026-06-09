@@ -1,0 +1,186 @@
+.container {
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+.header {
+  padding: 30rpx;
+  background: #1a73e8;
+}
+
+.header-title {
+  font-size: 32rpx;
+  color: #fff;
+  font-weight: 600;
+}
+
+.import-section {
+  background: #fff;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.section-title {
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 20rpx;
+}
+
+.type-picker {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24rpx 30rpx;
+  background: #f5f5f5;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.arrow {
+  font-size: 20rpx;
+  color: #999;
+}
+
+.template-card {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  border-radius: 12rpx;
+}
+
+.template-icon {
+  font-size: 48rpx;
+  margin-right: 24rpx;
+}
+
+.template-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.template-name {
+  font-size: 28rpx;
+  color: #1565c0;
+  font-weight: 500;
+  margin-bottom: 8rpx;
+}
+
+.template-desc {
+  font-size: 24rpx;
+  color: #1976d2;
+}
+
+.upload-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60rpx 30rpx;
+  border: 2rpx dashed #ddd;
+  border-radius: 12rpx;
+  background: #fafafa;
+}
+
+.upload-icon {
+  font-size: 64rpx;
+  margin-bottom: 20rpx;
+}
+
+.upload-text {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.upload-hint {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.file-list {
+  margin-top: 20rpx;
+}
+
+.file-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  background: #f5f5f5;
+  border-radius: 8rpx;
+  margin-bottom: 10rpx;
+}
+
+.file-name {
+  font-size: 26rpx;
+  color: #333;
+}
+
+.file-status {
+  font-size: 24rpx;
+  color: #4caf50;
+}
+
+.import-btn {
+  background: #1a73e8;
+  color: #fff;
+  border-radius: 44rpx;
+}
+
+.history-list {
+  margin-top: 10rpx;
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #eee;
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.history-icon {
+  width: 48rpx;
+  height: 48rpx;
+  background: #e8f5e9;
+  color: #4caf50;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  margin-right: 20rpx;
+}
+
+.history-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.history-name {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 6rpx;
+}
+
+.history-meta {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.history-status {
+  font-size: 24rpx;
+  padding: 4rpx 16rpx;
+  border-radius: 6rpx;
+}
+
+.history-status.success {
+  background: #e8f5e9;
+  color: #4caf50;
+}

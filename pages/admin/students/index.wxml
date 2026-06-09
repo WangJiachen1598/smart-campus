@@ -1,0 +1,125 @@
+<view class="custom-navbar">
+  <view class="navbar-bg"></view>
+  <view class="navbar-content">
+    <view class="navbar-left" bindtap="goHome">
+      <text class="home-icon">🏠</text>
+      <text class="home-text">首页</text>
+    </view>
+    <view class="navbar-title">学生信息管理</view>
+    <view class="navbar-right"></view>
+  </view>
+</view>
+<view class="container">
+  <view class="header">
+    <view class="header-title">学生信息管理</view>
+    <view class="header-actions">
+      <view class="batch-btn" wx:if="{{!isBatchMode}}" bindtap="enterBatchMode">
+        <text>批量操作</text>
+      </view>
+      <view class="batch-btn cancel" wx:else bindtap="exitBatchMode">
+        <text>取消</text>
+      </view>
+      <view class="add-btn" wx:if="{{!isBatchMode}}" bindtap="goAdd">
+        <text class="add-icon">+</text>
+        <text>新增学生</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="search-bar" wx:if="{{!isBatchMode}}">
+    <view class="search-input-wrapper">
+      <input class="search-input" placeholder="搜索学生姓名或学号" value="{{searchKeyword}}" bindinput="onSearchInput" />
+      <view class="search-icon" bindtap="onSearch">🔍</view>
+    </view>
+  </view>
+
+  <view class="filter-bar" wx:if="{{!isBatchMode}}">
+    <view class="filter-item {{currentFilter === 'all' ? 'active' : ''}}" bindtap="onFilterChange" data-filter="all">
+      <text>全部</text>
+    </view>
+    <view class="filter-item {{currentFilter === 'active' ? 'active' : ''}}" bindtap="onFilterChange" data-filter="active">
+      <text>在读</text>
+    </view>
+    <view class="filter-item {{currentFilter === 'inactive' ? 'active' : ''}}" bindtap="onFilterChange" data-filter="inactive">
+      <text>休学</text>
+    </view>
+  </view>
+
+  <view class="batch-bar" wx:if="{{isBatchMode}}">
+    <view class="select-all-btn" bindtap="toggleSelectAll">
+      <text class="checkbox {{isAllSelected ? 'checked' : ''}}">{{isAllSelected ? '✓' : ''}}</text>
+      <text>全选</text>
+    </view>
+    <view class="selected-count">已选择 {{selectedIds.length}} 人</view>
+  </view>
+
+  <view class="student-list">
+    <view class="student-item" wx:for="{{studentList}}" wx:key="id">
+      <view class="select-checkbox" wx:if="{{isBatchMode}}" bindtap="toggleSelect" data-id="{{item.id}}">
+        <text class="checkbox {{selectedIds.includes(item.id) ? 'checked' : ''}}">{{selectedIds.includes(item.id) ? '✓' : ''}}</text>
+      </view>
+      <view class="student-avatar" bindtap="goDetail" data-id="{{item.id}}" wx:if="{{!isBatchMode}}">
+        <view class="avatar-placeholder" style="width: 100%; height: 100%; background: linear-gradient(135deg, #1a73e8, #0d47a1); display: flex; align-items: center; justify-content: center; color: white; font-size: 32rpx;">
+          👨‍🎓
+        </view>
+      </view>
+      <view class="student-info" bindtap="goDetail" data-id="{{item.id}}" wx:if="{{!isBatchMode}}">
+        <view class="student-name-row">
+          <text class="student-name">{{item.name}}</text>
+          <text class="status-tag {{item.status === 'active' ? 'status-active' : 'status-inactive'}}">
+            {{item.status === 'active' ? '在读' : '休学'}}
+          </text>
+        </view>
+        <text class="student-id">学号：{{item.studentId}}</text>
+        <text class="student-class">班级：{{item.className}}</text>
+        <text class="student-phone">电话：{{item.phone}}</text>
+      </view>
+      <view class="student-info" wx:if="{{isBatchMode}}">
+        <view class="student-name-row">
+          <text class="student-name">{{item.name}}</text>
+          <text class="status-tag {{item.status === 'active' ? 'status-active' : 'status-inactive'}}">
+            {{item.status === 'active' ? '在读' : '休学'}}
+          </text>
+        </view>
+        <text class="student-id">学号：{{item.studentId}}</text>
+        <text class="student-class">班级：{{item.className}}</text>
+      </view>
+      <view class="student-actions" wx:if="{{!isBatchMode}}">
+        <view class="action-btn primary" catchtap="goEdit" data-id="{{item.id}}">
+          <text>编辑</text>
+        </view>
+        <view class="action-btn danger" catchtap="toggleStatus" data-id="{{item.id}}">
+          <text>{{item.status === 'active' ? '休学' : '复学'}}</text>
+        </view>
+        <view class="action-btn delete" catchtap="deleteStudent" data-id="{{item.id}}">
+          <text>删除</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="empty-state" wx:if="{{!loading && studentList.length === 0}}">
+      <text style="font-size: 64rpx;">📭</text>
+      <text>暂无学生数据</text>
+    </view>
+  </view>
+
+  <view class="batch-actions-bar" wx:if="{{isBatchMode && selectedIds.length > 0}}">
+    <view class="batch-action-btn danger" bindtap="batchDelete">
+      <text>批量删除</text>
+    </view>
+    <view class="batch-action-btn" bindtap="batchToggleStatus">
+      <text>批量切换状态</text>
+    </view>
+    <view class="batch-action-btn success" bindtap="batchExport">
+      <text>导出选中</text>
+    </view>
+  </view>
+
+  <view class="loading" wx:if="{{loading}}">
+    <view class="loading-dot"></view>
+    <view class="loading-dot"></view>
+    <view class="loading-dot"></view>
+  </view>
+</view>
+
+<custom-tab-bar />

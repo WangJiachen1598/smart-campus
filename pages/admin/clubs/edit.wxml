@@ -1,0 +1,38 @@
+<view class="container">
+  <view class="form-group">
+    <view class="form-label">社团封面</view>
+    <view class="image-upload" bindtap="chooseCoverImage">
+      <image wx:if="{{coverImage}}" src="{{coverImage}}" class="preview-image" mode="aspectFill" />
+      <view wx:else class="placeholder-area">
+        <text class="placeholder-icon">📷</text>
+        <text class="placeholder-text">点击上传封面</text>
+      </view>
+    </view>
+    <view wx:if="{{coverImage}}" class="image-actions">
+      <view class="action-btn" bindtap="previewCoverImage">预览</view>
+      <view class="action-btn delete" bindtap="deleteCoverImage">删除</view>
+    </view>
+  </view>
+
+  <view class="form-group">
+    <view class="form-label">社团名称</view>
+    <input class="form-input" value="{{name}}" placeholder="请输入社团名称" bindinput="onNameChange" />
+  </view>
+
+  <view class="form-group">
+    <view class="form-label">社团类别</view>
+    <picker mode="selector" range="{{categories}}" value="{{category}}" bindchange="onCategoryChange">
+      <view class="form-picker">
+        <text>{{category}}</text>
+        <text class="arrow">▼</text>
+      </view>
+    </picker>
+  </view>
+
+  <view class="form-group">
+    <view class="form-label">社团简介</view>
+    <textarea class="form-textarea" value="{{description}}" placeholder="请输入社团简介" bindinput="onDescriptionChange" />
+  </view>
+
+  <button class="save-btn" type="primary" bindtap="saveClub">保存</button>
+</view>
