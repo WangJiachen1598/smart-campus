@@ -122,10 +122,16 @@
   margin-left: 10rpx;
 }
 
+.protocol-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-left: 10rpx;
+}
+
 .protocol-link {
   font-size: 26rpx;
   color: #1a73e8;
-  margin-left: 4rpx;
 }
 
 .btn-login {

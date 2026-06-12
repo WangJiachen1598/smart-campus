@@ -82,6 +82,10 @@ Page({
   },
 
   goProtocol() {
-    wx.showToast({ title: '协议页面开发中', icon: 'none' });
+    wx.navigateTo({ url: '/pages/protocol/index' });
+  },
+
+  goPrivacy() {
+    wx.navigateTo({ url: '/pages/privacy/index' });
   },
 });

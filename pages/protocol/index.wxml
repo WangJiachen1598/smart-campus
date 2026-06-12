@@ -1,0 +1,114 @@
+<view class="container">
+  <view class="header">
+    <view class="header-title">用户服务协议</view>
+    <view class="header-date">更新日期：2026年6月12日</view>
+  </view>
+
+  <view class="content">
+    <view class="section">
+      <view class="section-title">一、服务条款的确认和接受</view>
+      <view class="section-content">
+        <text>欢迎使用智慧校园学情与社团一体化管理小程序（以下简称"本小程序"）。在您使用本小程序服务之前，请您仔细阅读本协议的全部内容。如果您不同意本协议的任何内容，请不要注册、使用本小程序服务。您点击"同意"按钮或使用本小程序服务，即表示您已充分理解和同意本协议的全部内容，包括我们对本协议随时所做的任何修改和补充，并愿意受本协议的约束。</text>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">二、服务内容</view>
+      <view class="section-content">
+        <text>1. <text class="highlight">学生服务</text>：社团浏览与报名、活动签到、成绩查询、考勤记录查看、综测加分申请、消息通知接收、个人信息管理等功能。</text>
+        <text>2. <text class="highlight">教师/管理员服务</text>：社团管理、活动发布、成员审批、签到管理、学情看板查看、学生信息管理、批量数据操作、异常预警等功能。</text>
+        <text>3. 本小程序保留随时变更服务内容的权利，包括但不限于功能调整、界面优化等。</text>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">三、用户注册与账号管理</view>
+      <view class="section-content">
+        <text>1. 用户注册：学生用户使用学号进行注册，教师用户使用工号进行注册。</text>
+        <text>2. 账号安全：用户应妥善保管账号和密码，对账号安全负责。因个人保管不善造成的损失，由用户自行承担。</text>
+        <text>3. 真实信息：用户应提供真实、准确、完整的注册信息，如有变动应及时更新。</text>
+        <text>4. 账号注销：用户可联系学校管理员申请注销账号。</text>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">四、用户使用规范</view>
+      <view class="section-content">
+        <text>1. 遵守法律法规，不得利用本小程序从事违法活动。</text>
+        <text>2. 遵守学校规章制度，按照规定使用各项功能。</text>
+        <text>3. 不得恶意攻击、干扰、破坏本小程序的正常运行。</text>
+        <text>4. 不得冒用他人身份使用本小程序服务。</text>
+        <text>5. 不得传播虚假信息、垃圾信息或有损他人利益的内容。</text>
+        <text>6. 尊重他人隐私，不得非法获取、泄露他人个人信息。</text>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">五、个人信息保护</view>
+      <view class="section-content">
+        <text>1. 本小程序重视用户个人信息的保护，具体详见《隐私政策》。</text>
+        <text>2. 收集用户信息的目的：提供准确的学情数据、社团管理服务、活动通知等。</text>
+        <text>3. 信息使用范围：仅用于学校教育教学管理和学生服务质量提升。</text>
+        <text>4. 用户权利：用户有权了解、查看、更正自己的个人信息。</text>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">六、服务变更、中断和终止</view>
+      <view class="section-content">
+        <text>1. 本小程序有权在必要时修改或中断服务，且无需对用户负责。</text>
+        <text>2. 因系统维护、升级等需要暂停服务时，将提前通知用户。</text>
+        <text>3. 用户违反本协议规定时，本小程序有权终止服务。</text>
+        <text>4. 本小程序终止服务后，用户账号内的信息将根据相关规定处理。</text>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">七、免责声明</view>
+      <view class="section-content">
+        <text>1. 因不可抗力（包括但不限于自然灾害、战争、政策变更等）导致服务中断，本小程序不承担责任。</text>
+        <text>2. 用户因自身操作不当造成的损失，由用户自行承担。</text>
+        <text>3. 本小程序不对用户发布信息的真实性、合法性负责。</text>
+        <text>4. 因第三方原因造成的损失，本小程序可协助用户维权，但不承担直接责任。</text>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">八、知识产权</view>
+      <view class="section-content">
+        <text>1. 本小程序的所有内容、设计、代码等知识产权归开发方所有。</text>
+        <text>2. 未经授权，用户不得复制、传播、修改本小程序内容。</text>
+        <text>3. 用户在本小程序发布的内容，发布者享有相应权益。</text>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">九、协议修改</view>
+      <view class="section-content">
+        <text>1. 本小程序有权随时修改本协议，修改后的协议一旦公布即生效。</text>
+        <text>2. 如用户不同意修改后的协议，有权停止使用服务。</text>
+        <text>3. 继续使用服务即表示用户接受修改后的协议。</text>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">十、争议解决</view>
+      <view class="section-content">
+        <text>1. 本协议的订立、执行和解释均适用中华人民共和国法律。</text>
+        <text>2. 因本协议引起的争议，双方应友好协商解决。</text>
+        <text>3. 协商不成时，可向有管辖权的人民法院提起诉讼。</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="footer">
+    <view class="footer-text">如有疑问，请联系我们的客服团队</view>
+    <view class="footer-contact" bindtap="copyContact">support@smartcampus.com</view>
+  </view>
+
+  <button class="back-btn" bindtap="scrollToTop">返回顶部</button>
+
+  <view class="top-btn" bindtap="scrollToTop">
+    <text>↑</text>
+  </view>
+</view>

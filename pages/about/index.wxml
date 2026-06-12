@@ -20,7 +20,7 @@
     <view class="about-item" bindtap="showAgreement">
       <view class="item-left">
         <text class="item-icon">📄</text>
-        <text class="item-name">用户协议</text>
+        <text class="item-name">用户服务协议</text>
       </view>
       <text class="item-arrow">›</text>
     </view>
@@ -58,7 +58,7 @@
   </view>
 
   <view class="footer">
-    <text class="footer-text">© 2024 智慧校园</text>
+    <text class="footer-text">© 2026 智慧校园</text>
     <text class="footer-text">All rights reserved</text>
   </view>
 </view>

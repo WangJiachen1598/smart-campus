@@ -1,0 +1,106 @@
+<view class="container">
+  <view class="header">
+    <view class="header-title">隐私政策</view>
+    <view class="header-date">更新日期：2026年6月12日</view>
+  </view>
+
+  <view class="content">
+    <view class="section">
+      <view class="section-title">一、信息收集</view>
+      <view class="section-content">
+        <text>我们承诺尊重并保护您的个人隐私。在您使用智慧校园小程序时，我们可能会收集以下信息：</text>
+        <text>1. <text class="highlight">基础身份信息</text>：学号/工号、姓名、年级/入职年份、班级/部门、联系方式等。</text>
+        <text>2. <text class="highlight">学情数据</text>：学习成绩、考勤记录、社团参与记录、活动签到记录、综测加分记录等。</text>
+        <text>3. <text class="highlight">设备信息</text>：设备型号、操作系统版本、唯一设备标识符等，用于保障服务安全和质量。</text>
+        <text>4. <text class="highlight">使用信息</text>：功能使用记录、操作日志、访问时间等，用于优化服务体验。</text>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">二、信息使用目的</view>
+      <view class="section-content">
+        <text>我们收集您的信息仅用于以下目的：</text>
+        <text>1. 提供学情查询服务，包括成绩、考勤、综测等数据展示。</text>
+        <text>2. 支持社团管理功能，包括社团浏览、报名、审批等。</text>
+        <text>3. 实现活动签到功能，记录您的活动参与情况。</text>
+        <text>4. 发送重要通知，包括社团通知、活动提醒、审核结果等。</text>
+        <text>5. 进行数据统计分析，支持学校教育教学管理决策。</text>
+        <text>6. 保障服务安全，识别异常操作和潜在风险。</text>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">三、信息共享与披露</view>
+      <view class="section-content">
+        <text>未经您的同意，我们不会与任何第三方共享您的个人信息，但以下情况除外：</text>
+        <text>1. <text class="highlight">法律法规要求</text>：根据法律法规、国家机关依法提出的要求，或司法机构依法调查取证。</text>
+        <text>2. <text class="highlight">学校管理需要</text>：为维护学校教育教学秩序，进行必要的学情数据共享。</text>
+        <text>3. <text class="highlight">服务提供商</text>：为提供服务必要，我们可能委托可信的服务提供商协助处理，但仅限于实现服务目的所需的范围。</text>
+        <text>4. <text class="highlight">用户授权</text>：经您明确授权同意的其他情况。</text>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">四、信息存储与安全</view>
+      <view class="section-content">
+        <text>1. <text class="highlight">存储地点</text>：您的信息将存储在中华人民共和国境内的服务器上。</text>
+        <text>2. <text class="highlight">存储期限</text>：我们将在为您提供服务所必需的期间内保留您的信息。超过存储期限后，您的信息将被删除或匿名化处理。</text>
+        <text>3. <text class="highlight">安全措施</text>：我们采用业界通用的安全技术和管理措施来保护您的信息安全，包括数据加密、访问控制、安全审计等。</text>
+        <text>4. <text class="highlight">安全事件</text>：如发生信息安全事件，我们将按照法律法规的要求及时向您告知，并采取补救措施。</text>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">五、用户权利</view>
+      <view class="section-content">
+        <text>您对您的个人信息享有以下权利：</text>
+        <text>1. <text class="highlight">知情权</text>：您有权了解我们如何收集、使用您的信息。</text>
+        <text>2. <text class="highlight">访问权</text>：您有权访问您的个人信息，查看相关信息记录。</text>
+        <text>3. <text class="highlight">更正权</text>：如您的个人信息有误，您有权要求我们进行更正。</text>
+        <text>4. <text class="highlight">删除权</text>：在符合法定条件下，您有权要求我们删除您的个人信息。</text>
+        <text>5. <text class="highlight">撤回同意</text>：您有权撤回之前给予的信息收集授权。</text>
+        <text>6. <text class="highlight">投诉举报</text>：您有权就我们的信息处理行为进行投诉或举报。</text>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">六、未成年人保护</view>
+      <view class="section-content">
+        <text>1. 我们高度重视未成年人信息的保护。</text>
+        <text>2. 未成年人在使用本服务前，应事先取得监护人的同意。</text>
+        <text>3. 我们将根据相关法律法规的要求，对未成年人信息进行特殊保护。</text>
+        <text>4. 如您是未满18周岁的未成年人，请在使用服务前请监护人仔细阅读本政策，并在取得监护人的同意后使用。</text>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">七、政策更新</view>
+      <view class="section-content">
+        <text>1. 我们可能会不时更新本隐私政策。隐私政策的更新将在小程序内公布。</text>
+        <text>2. 未经您的明确同意，我们不会削减您依据当前生效的隐私政策所享有的权利。</text>
+        <text>3. 对于重大变更（如变更使用目的、共享范围等），我们会提供更为显著的通知。</text>
+        <text>4. 如您继续使用本服务，即表示您同意接受更新后的隐私政策约束。</text>
+      </view>
+    </view>
+
+    <view class="section">
+      <view class="section-title">八、联系我们</view>
+      <view class="section-content">
+        <text>如您对本隐私政策有任何疑问、意见或建议，或您想行使您的用户权利，请通过以下方式联系我们：</text>
+        <text>联系邮箱：privacy@smartcampus.com</text>
+        <text>我们将在收到您的请求后尽快核实和处理。</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="footer">
+    <view class="footer-text">如有疑问，请联系我们的客服团队</view>
+    <view class="footer-contact" bindtap="copyContact">privacy@smartcampus.com</view>
+  </view>
+
+  <button class="back-btn" bindtap="scrollToTop">返回顶部</button>
+
+  <view class="top-btn" bindtap="scrollToTop">
+    <text>↑</text>
+  </view>
+</view>

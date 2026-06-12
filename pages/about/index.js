@@ -16,19 +16,11 @@ Page({
   },
 
   showAgreement() {
-    wx.showModal({
-      title: '用户协议',
-      content: '欢迎使用智慧校园小程序！\n\n在使用本小程序前，请仔细阅读并理解《用户协议》和《隐私政策》。',
-      showCancel: false
-    });
+    wx.navigateTo({ url: '/pages/protocol/index' });
   },
 
   showPrivacy() {
-    wx.showModal({
-      title: '隐私政策',
-      content: '我们重视您的隐私保护。您的个人信息将受到严格保护，不会被泄露或滥用。',
-      showCancel: false
-    });
+    wx.navigateTo({ url: '/pages/privacy/index' });
   },
 
   showLicenses() {

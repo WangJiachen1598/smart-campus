@@ -35,7 +35,10 @@
             <text class="protocol-text">我已阅读并同意</text>
           </label>
         </checkbox-group>
-        <text class="protocol-link" bindtap="goProtocol">《用户服务协议》</text>
+        <view class="protocol-links">
+          <text class="protocol-link" bindtap="goProtocol">《用户服务协议》</text>
+          <text class="protocol-link" bindtap="goPrivacy">《隐私政策》</text>
+        </view>
       </view>
 
       <button class="btn-login" bindtap="handleLogin" loading="{{loading}}">

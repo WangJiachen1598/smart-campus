@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/login/index",
+    "pages/protocol/index",
+    "pages/privacy/index",
     "pages/index/index",
     "pages/clubs/list",
     "pages/clubs/detail",
